@@ -1,0 +1,37 @@
+.engflow-enabled.bazelrc
+.bazelrc.user
+.DS_Store
+
+.bazelbsp/
+.bsp/
+
+.idea/*
+!.idea/icon.svg
+
+.ijwb
+.intellijPlatform
+
+.jps-compiled
+
+.qodana
+
+__pycache__
+
+bazel-bin
+bazel-hirschgarten
+bazel-out
+bazel-testlogs
+bazel-bazel
+
+idea-flex.skeleton
+jflex-*.jar
+
+projectview.bazelproject
+tools/mtls/*
+!tools/mtls/.gitkeep
+
+# perf test
+out
+
+# jps
+.jps-compiled
