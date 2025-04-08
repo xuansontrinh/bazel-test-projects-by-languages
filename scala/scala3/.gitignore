@@ -27,7 +27,6 @@ bazel-scala3
 idea-flex.skeleton
 jflex-*.jar
 
-projectview.bazelproject
 tools/mtls/*
 !tools/mtls/.gitkeep
 
