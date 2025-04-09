@@ -1,0 +1,51 @@
+workspace(name = "scala_example")
+
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+skylib_version = "1.4.1"
+
+http_archive(
+    name = "bazel_skylib",
+    sha256 = "b8a1527901774180afc798aeb28c4634bdccf19c4d98e7bdd1ce79d1fe9aaad7",
+    type = "tar.gz",
+    urls = [
+        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
+        "https://github.com/bazelbuild/bazel-skylib/releases/download/{}/bazel-skylib-{}.tar.gz".format(skylib_version, skylib_version),
+    ],
+)
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+# https://github.com/bazelbuild/rules_scala/issues/1482
+# https://github.com/bazelbuild/bazel-central-registry/issues/522
+http_archive(
+    name = "io_bazel_rules_scala",
+    sha256 = "9a23058a36183a556a9ba7229b4f204d3e68c8c6eb7b28260521016b38ef4e00",
+    strip_prefix = "rules_scala-6.4.0",
+    url = "https://github.com/bazelbuild/rules_scala/releases/download/v6.4.0/rules_scala-v6.4.0.tar.gz",
+)
+
+load("@io_bazel_rules_scala//:scala_config.bzl", "scala_config")
+scala_config("2.13.12")
+
+load("@io_bazel_rules_scala//scala:scala.bzl", "scala_repositories")
+scala_repositories()
+
+load("@io_bazel_rules_scala//scala:toolchains.bzl", "scala_register_toolchains")
+scala_register_toolchains()
+
+load(
+    "@io_bazel_rules_scala//testing:scalatest.bzl",
+    "scalatest_repositories",
+    "scalatest_toolchain",
+)
+scalatest_repositories()
+scalatest_toolchain()
+
+load("@rules_proto//proto:repositories.bzl", "rules_proto_dependencies", "rules_proto_toolchains")
+
+rules_proto_dependencies()
+
+rules_proto_toolchains()
+
+load("//3rdparty:workspace.bzl", "maven_dependencies")
+maven_dependencies()
