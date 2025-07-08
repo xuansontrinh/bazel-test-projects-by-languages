@@ -13,7 +13,7 @@ func TestB(t *testing.T) {
 		assert.True(t, true)
 	})
 
-	t.Run("source file test", func(t *testing.T) {
+	t.Run("this should fail for testing sub test run", func(t *testing.T) {
 		FromSourceFile()
 		assert.True(t, false)
 	})
