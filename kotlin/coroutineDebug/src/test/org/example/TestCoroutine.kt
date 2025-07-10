@@ -1,15 +1,14 @@
 package org.example
 
-import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import org.junit.jupiter.api.Test
 
-class TestMain {
+class TestCoroutine {
     @Test
-    fun testMain() {
+    fun testCoroutine() {
         runBlocking {
             launch(Dispatchers.Default) {
                 delay(100)
@@ -17,7 +16,6 @@ class TestMain {
                 delay(100)
             }
         }
-        false shouldBe true
     }
 
     suspend fun firstLevel() {

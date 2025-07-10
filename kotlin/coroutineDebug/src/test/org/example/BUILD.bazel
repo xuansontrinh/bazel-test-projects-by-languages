@@ -1,10 +1,10 @@
 load("@rules_kotlin//kotlin:jvm.bzl", "kt_jvm_test")
 
 kt_jvm_test(
-    name = "tests",
-    srcs = glob(["**/*.kt"]),
+    name = "TestCoroutine",
+    srcs = ["TestCoroutine.kt"],
     args = [
-        "--select-class=org.example.TestMain",
+        "--select-class=org.example.TestCoroutine",
         "--fail-if-no-tests",
     ],
     main_class = "org.junit.platform.console.ConsoleLauncher",
